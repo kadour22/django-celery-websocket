@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex flex-column justify-content-center align-items-center vh-100 text-center">
+    <div class="w-50">
+        <div class="progress" style="height: 30px;">
+            <div class="progress-bar bg-success"
+                role="progressbar"
+                style="width: {{ progress }}%;"
+                aria-valuenow="{{ progress }}"
+                aria-valuemin="0"
+                aria-valuemax="100">
+                {{ progress }}%
+            </div>
+        </div>
+        <br>
+
+        {% if progress < 100 %}
+            <h2>الــهدف : تســبيح 100 مرة</h2>
+        {% else %}
+            <p>أكـملـت 100 📿🎊 "اللّهــم إجــعلهَـا فـيِ مـيزانْ حســناتيِ"</p>
+        {% endif %}
+
+        <br>
+
+        {% if progress == 100 %}
+            <strong>دعــاء هديــة📿🤲</strong>
+            <h2>اللهم لا سهل إلا ما جعلته سهلا وأنت تجعل الحزن إذا شئت سهلا</h2>
+            <br>
+        {% endif %}
+
+        <div class="btn-group mt-3">
+            {% if progress == 100 %}
+                <a href="{% url 'reset_tasbih' %}" class="btn btn-primary btn-lg">تســبيح مرة اخرى</a>
+            {% else %}
+                <a href="{% url 'tashbih_count' %}" class="btn btn-success btn-lg">سبــحان الـلّــه</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

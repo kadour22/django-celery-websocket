@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOOR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #121212;
+            color: #f0f0f0;
+        }
+
+        .navbar {
+            background-color: #1a1a1a !important;
+        }
+
+        .nav-link {
+            color: #d1b3ff !important; /* light purple */
+        }
+
+        .nav-link.active {
+            color: #a64dff !important; /* brighter purple */
+        }
+
+        .nav-link:hover {
+            color: #e0b3ff !important;
+        }
+
+        .card {
+            background-color: #1f1f1f;
+            color: #f0f0f0;
+            border: 1px solid #333;
+        }
+
+        .card-footer {
+            background-color: #2a2a2a;
+            color: #c0c0c0;
+        }
+
+        .btn-primary {
+            background-color: #800080;
+            border-color: #800080;
+        }
+
+        .btn-primary:hover {
+            background-color: #a64dff;
+            border-color: #a64dff;
+        }
+    </style>
+</head>
+<body>
+ <nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+      <a class="navbar-brand text-light" href="/">NOOR</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+               {% if request.user.is_authenticated  %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'index'  %}">اذكـــــار</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'doaa'  %}">دعــاء</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'tasbih'  %}">تســبيح</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'register'  %}">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Login</a>
+        </li>
+        {% endif %}
+          
+    </ul>
+</div>
+</div>
+</nav>
+
+{% block content %}
+
+{% endblock content %}
+  <footer>
+    <p>&copy; 2025 Noor Islamic App. All Rights Reserved.</p>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

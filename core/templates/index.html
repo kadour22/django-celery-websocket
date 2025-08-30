@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2 class="text-light">adhkar types</h2>
+
+   <div class="container mt-3">
+      <div class="d-flex overflow-auto flex-nowrap py-2" style="background-color: #1a1a1a; padding: 10px; border-radius: 8px;">
+        {% for type in types %}
+          <a href="{% url 'dheker_by_type' type.id %}" class="btn flex-shrink-0 me-2" 
+             style="border: 1px solid #800080; color: #800080; background-color: transparent;">
+            {{ type.name }}
+          </a>
+        {% endfor %}
+      </div>
+   </div>
+
+    <div class="container mt-5" style="margin-left: 30px;">
+      <div class="row">
+        {% for i in adhkar %}
+        <div class="card mb-3" style="width: 18rem; background-color: #2a2a2a; color: #f0f0f0;">
+          <div class="card-body">
+            <p class="card-text">{{i.text}}</p>
+            <small class="card-link text-secondary">{{i.type.name}}</small>
+          </div>
+       </div>
+       {% endfor %}
+      </div>
+    </div>
+{% endblock content %}
